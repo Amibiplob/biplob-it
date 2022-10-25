@@ -1,10 +1,11 @@
-import React from 'react';
+import React ,{ useState } from 'react';
 import Navbar from './Components/Navbar';
 import { Outlet } from 'react-router-dom';
 const Root = () => {
+    const [dark, setDark] = useState(false);
     return (
-        <div>
-            <Navbar></Navbar>
+        <div data-theme={dark ? "dark" : 'light'}>
+            <Navbar setDark={setDark}></Navbar>
             <Outlet></Outlet>
         </div>
     );

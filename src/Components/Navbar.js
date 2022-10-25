@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 const Navbar = () => {
     return (
-        <div className="navbar bg-base-100 lg:w-11/12 mx-auto">
+        <div className="navbar bg-neutral lg:w-11/12 mx-auto">
             <div className="navbar-start">
                 <div className="dropdown mr-2">
                     <label className="btn btn-circle swap swap-rotate lg:hidden">
@@ -19,25 +19,25 @@ const Navbar = () => {
                         <li><Link>Item 1</Link></li>
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl text-neutral-content">daisyUI</Link>
             </div>
 
             <div className="navbar-end">
                 <div>
-                    <ul className="flex gap-2">
+                    <ul className="flex gap-2 text-neutral-content">
                         <li className='hover:bg-slate-300 hover:rounded-lg tooltip tooltip-bottom' data-tip="Home">
                             <NavLink to='/home'>
-                                {({ isActive }) => (<span className={isActive ? 'bg-blue-100 text-blue-600 round px-2 py-1 rounded-lg' : 'p-2'}>Home</span>)}
+                                {({ isActive }) => (<span className={isActive ? 'bg-blue-100 text-blue-600 round px-2 py-1 rounded-lg' : 'px-2 py-1'}>Home</span>)}
                             </NavLink>
                         </li>
                         <li className='hover:bg-slate-300 hover:rounded-lg tooltip tooltip-bottom' data-tip="Login">
                             <NavLink to='/login'>
-                                {({ isActive }) => (<span className={isActive ? 'bg-blue-100 text-blue-600 round px-2 py-1 rounded-lg' : 'p-2'}>Login</span>)}
+                                {({ isActive }) => (<span className={isActive ? 'bg-blue-100 text-blue-600 round px-2 py-1 rounded-lg' : 'px-2 py-1'}>Login</span>)}
                             </NavLink>
                         </li>
                         <li className='hover:bg-slate-300 hover:rounded-lg tooltip tooltip-bottom' data-tip="Register">
                             <NavLink to='/register'>
-                                {({ isActive }) => (<span className={isActive ? 'bg-blue-100 text-blue-600 round px-2 py-1 rounded-lg' : 'p-2'}>Register</span>)}
+                                {({ isActive }) => (<span className={isActive ? 'bg-blue-100 text-blue-600 round px-2 py-1 rounded-lg' : 'px-2 py-1'}>Register</span>)}
                             </NavLink>
                         </li>
 

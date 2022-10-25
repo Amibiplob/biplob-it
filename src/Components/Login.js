@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 const Login = () => {
     return (
         <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className="text-center lg:text-left">
+            <div className="hero-content flex-col justify-around lg:flex-row-reverse">
+                <div className="flex flex-col items-center gap-7 lg:text-left w-3/4 lg:w-2/4">
                     <h1 className="text-5xl font-bold">Login now!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <img src="https://media.istockphoto.com/photos/user-typing-login-and-password-cyber-security-concept-picture-id1368151370" alt="" />
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
+                        <h1 className="text-4xl font-bold text-center">Login Here</h1>
+                        <hr />
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -32,11 +34,6 @@ const Login = () => {
                         <div className="divider">
                             <p className="dark:text-gray-400">Login with social accounts</p>
                         </div>
-
-
-
-
-                        
                         <div className="flex justify-center space-x-4">
                             <button aria-label="Log in with Google" className="p-3 rounded-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-current">
@@ -55,14 +52,8 @@ const Login = () => {
                             </button>
                         </div>
                         <p className="text-center dark:text-gray-400">Don't have an account?
-                            <Link rel="noopener noreferrer" to="/register" className='underline px-2 dark:text-gray-100 tooltip tooltip-bottom' data-tip=" Register">Register</Link>
+                            <Link to="/register" className='underline px-2 dark:text-gray-100 tooltip tooltip-bottom' data-tip=" Register">Register</Link>
                         </p>
-                 
-
-
-
-
-                        
                     </div>
                 </div>
             </div>

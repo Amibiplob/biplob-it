@@ -43,15 +43,15 @@ const Navbar = () => {
 
                     </ul>
                 </div>
-                <div className="dropdown dropdown-end ml-2">
-                    <label tabIndex={0} className='btn btn-ghost border-2 hover:border-black btn-circle avatar tooltip tooltip-bottom' data-tip="Profile">
-                       
-                            <img className="mask mask-heart" src="https://placeimg.com/160/160/arch" alt='' />
-                      
+                <div className="dropdown dropdown-end ml-2">               
+                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                        <div className="w-10 rounded-full">
+                            <img src="https://placeimg.com/160/160/arch" alt='' />
+                        </div>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
 
-                        <li><Link>Settings</Link></li>
+                        <li><Link to='/profile'>Profile</Link></li>
                         <li><Link>Logout</Link></li>
                         <li>
                             <label className="swap swap-rotate">

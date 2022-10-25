@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './Components/ErrorPage';
 import Home from './Components/Home';
 import Login from './Components/Login';
+import Profile from './Components/Profile';
 import Register from './Components/Register';
 import Root from './Root';
 function App() {
@@ -26,6 +27,10 @@ function App() {
         {
           path: 'register',
           element: <Register></Register>,
+        },
+        {
+          path: 'profile',
+          element: <Profile></Profile>,
         },
       ]
     }

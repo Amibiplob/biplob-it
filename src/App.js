@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Blog from './Components/Blog';
 import ErrorPage from './Components/ErrorPage';
 import Home from './Components/Home';
 import Login from './Components/Login';
@@ -31,6 +32,10 @@ function App() {
         {
           path: 'profile',
           element: <Profile></Profile>,
+        },
+        {
+          path: 'blog',
+          element: <Blog></Blog>,
         },
       ]
     }

@@ -40,6 +40,11 @@ const Navbar = ({setDark}) => {
                                 {({ isActive }) => (<span className={isActive ? 'bg-blue-100 text-blue-600 round px-2 py-1 rounded-lg' : 'px-2 py-1'}>Register</span>)}
                             </NavLink>
                         </li>
+                        <li className='hover:bg-slate-300 hover:rounded-lg tooltip tooltip-bottom' data-tip="Blog">
+                            <NavLink to='/blog'>
+                                {({ isActive }) => (<span className={isActive ? 'bg-blue-100 text-blue-600 round px-2 py-1 rounded-lg' : 'px-2 py-1'}>Blog</span>)}
+                            </NavLink>
+                        </li>
                         <li>
                             <label className="swap swap-rotate">
                                 <input type="checkbox" />

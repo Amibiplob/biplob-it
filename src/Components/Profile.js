@@ -2,9 +2,9 @@ import React from 'react';
 
 const Profile = () => {
     return (
-        <div className='flex flex-col lg:flex-row items-center mt-24 w-fit bg-slate-300 mx-auto p-3 rounded-lg'>
+        <div className='flex flex-col lg:flex-row items-center my-10 w-fit bg-slate-300 mx-auto p-3 rounded-lg'>
             <div className="lg:pr-3 mb-5 lg:m-0">
-                <img src="https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" className="object-cover object-center w-60 rounded dark:bg-gray-500" />
+                <img src="https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" className="object-cover object-center w-96 rounded dark:bg-gray-500" />
             </div>
             <div className="flex flex-col">
                 <div className="flex items-center gap-3">

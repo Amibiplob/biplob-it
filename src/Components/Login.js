@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+  const log = () => {
+        toast.success("ghftfgb", { autoClose: 500 });
+  };
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col justify-around lg:flex-row-reverse">
@@ -29,7 +33,7 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button onClick={log} className="btn btn-primary">Login</button>
                         </div>
                         <div className="divider">
                             <p className="dark:text-gray-400">Login with social accounts</p>

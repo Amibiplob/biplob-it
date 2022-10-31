@@ -1,8 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  sendEmailVerification,
+} from "firebase/auth";
+import app from "./FireBase/firebase.init";
+import { toast } from "react-toastify";
+
 const Register = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const handlePhoto = (e) => {
+    setPhoto(e.target.value);
+  };
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+
+  const handleRegister = () => {
+    const auth = getAuth(app);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photo,
+        })
+          .then(() => {
+            // Profile updated!
+            toast.success("Hi" + "   " + user.displayName, { autoClose: 5000 });
+            // Email verification
+            sendEmailVerification(auth.currentUser).then(() => {
+              // Email verification sent!
+              toast.success(
+                "An email verification link was sent to your email address.",
+                { autoClose: 500 }
+              );
+            });
+          })
+          .catch((error) => {
+            toast.error(error, { autoClose: 5000 });
+          });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        toast.info(errorMessage, { autoClose: 500 });
+        toast.error(errorCode, { autoClose: 5000 });
+        setError(errorMessage);
+      });
+  };
+
   return (
-    <div className="flex justify-center items-center gap-20 min-h-screen bg-base-200">
+    <div className="flex lg:flex-row flex-col justify-center items-center gap-20 py-10 bg-base-200">
       <div className="flex flex-col items-center gap-7 lg:text-left w-3/4 lg:w-2/4">
         <h1 className="text-5xl font-bold">Register Here!</h1>
         <img
@@ -10,19 +76,19 @@ const Register = () => {
           alt=""
         />
       </div>
-      <div className="max-w-sm shadow-2xl bg-base-100 rounded-lg card-body">
+      <div className="lg:max-w-sm w-3/4 shadow-2xl bg-base-100 rounded-lg card-body">
         <div className="form-control">
-          <h1 className="text-4xl font-bold text-center mb-3">
-            Register Here
-          </h1>
+          <h1 className="text-4xl font-bold text-center mb-3">Register Here</h1>
           <hr />
           <label className="label">
             <span className="label-text">Name</span>
           </label>
           <input
+            onBlur={handleName}
             type="text"
             placeholder="Name"
             className="input input-bordered"
+            required
           />
         </div>
         <div className="form-control">
@@ -30,9 +96,11 @@ const Register = () => {
             <span className="label-text">Email</span>
           </label>
           <input
-            type="text"
+            onBlur={handleEmail}
+            type="email"
             placeholder="email"
             className="input input-bordered"
+            required
           />
         </div>
         <div className="form-control">
@@ -40,6 +108,7 @@ const Register = () => {
             <span className="label-text">Photo URL</span>
           </label>
           <input
+            onBlur={handlePhoto}
             type="text"
             placeholder="Photo URL"
             className="input input-bordered"
@@ -50,13 +119,22 @@ const Register = () => {
             <span className="label-text">Password</span>
           </label>
           <input
-            type="text"
+            onBlur={handlePassword}
+            type="password"
             placeholder="password"
             className="input input-bordered"
+            required
           />
         </div>
+        {error && <p className="text-red-500">{error}</p>}
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Register</button>
+          <button
+            onClick={handleRegister}
+            type="submit"
+            className="btn btn-primary"
+          >
+            Register
+          </button>
         </div>
         <p className="text-center dark:text-gray-400">
           Already have an account?

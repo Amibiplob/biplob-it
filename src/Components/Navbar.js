@@ -19,12 +19,12 @@ const Navbar = ({setDark}) => {
                         <li><Link>Item 1</Link></li>
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl text-neutral-content">daisyUI</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl text-neutral-content">BipoB IT</Link>
             </div>
 
             <div className="navbar-end">
                 <div>
-                    <ul className="flex gap-2 text-neutral-content">
+                    <ul className="flex lg:gap-2 text-neutral-content">
                         <li className='hover:bg-slate-300 hover:rounded-lg tooltip tooltip-bottom' data-tip="Home">
                             <NavLink to='/home'>
                                 {({ isActive }) => (<span className={isActive ? 'bg-blue-100 text-blue-600 round px-2 py-1 rounded-lg' : 'px-2 py-1'}>Home</span>)}

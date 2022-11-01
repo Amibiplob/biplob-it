@@ -8,6 +8,7 @@ import ErrorPage from "./Components/ErrorPage";
 import Faq from "./Components/Faq";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import Profile from "./Components/Profile";
 import Register from "./Components/Register";
 import Root from "./Root";
@@ -36,7 +37,12 @@ function App() {
         },
         {
           path: "profile",
-          element: <Profile></Profile>,
+          element: (
+            <PrivateRoute>
+      
+              <Profile></Profile>
+            </PrivateRoute>
+          ),
         },
         {
           path: "blog",
@@ -55,7 +61,11 @@ function App() {
           path: "details/:id",
           loader: ({ params }) =>
             fetch(`https://biplob-it-course-amibiplob.vercel.app/${params.id}`),
-          element: <Details></Details>,
+          element: (
+            <PrivateRoute>
+              <Details></Details>
+            </PrivateRoute>
+          ),
         },
       ],
     },

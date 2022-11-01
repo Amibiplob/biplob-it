@@ -1,14 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  getAuth,
-  updateProfile,
-  sendEmailVerification,
-} from "firebase/auth";
+import { getAuth, updateProfile, sendEmailVerification } from "firebase/auth";
 import app from "./FireBase/firebase.init";
 import { toast } from "react-toastify";
 import { AuthContext } from "./Context/UserContext";
-   const auth = getAuth(app);
+const auth = getAuth(app);
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -33,12 +29,12 @@ const Register = () => {
   };
 
   const handleRegister = () => {
- 
+    
     createUser(email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
+    //    console.log(user);
 
         updateProfile(auth.currentUser, {
           displayName: name,

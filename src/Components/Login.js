@@ -1,23 +1,70 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import app from "./FireBase/firebase.init";
+import { toast } from "react-toastify";
+import { AuthContext } from "./Context/UserContext";
 
 const auth = getAuth(app);
 const Login = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const { signIn, forgotPassword} = useContext(AuthContext);
+
   const googleProvider = new GoogleAuthProvider();
 
   const handleGoogleSignIn = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+        toast.success("Hi " + user.displayName, { autoClose: 5000 });
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        toast.info(errorMessage, { autoClose: 500 });
+        toast.error(errorCode, { autoClose: 5000 });
+      })}
 
-
-  signInWithPopup(auth, googleProvider)
-    .then((result) => {
-    
-      const user = result.user;
-  console.log(user)
-    })
-   
-
+     
+  const handleSignIn = () => {
+    signIn(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        toast.success("Hi " + user.displayName, { autoClose: 5000 });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError(errorMessage)
+        toast.info(errorMessage, { autoClose: 500 });
+        toast.error(errorCode, { autoClose: 5000 });
+      });
+  };
+  ////////////////////
+  const resetPassword = () => {
+   forgotPassword(auth, email)
+     .then(() => {
+       // Password reset email sent!
+       toast.success('Password reset email sent!', { autoClose: 5000 });
+     })
+     .catch((error) => {
+       const errorCode = error.code;
+       const errorMessage = error.message;
+        toast.info(errorMessage, { autoClose: 500 });
+        toast.error(errorCode, { autoClose: 5000 });
+     });
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -38,9 +85,11 @@ const Login = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="text"
+                onBlur={handleEmail}
+                type="email"
                 placeholder="email"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -48,18 +97,26 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                onBlur={handlePassword}
+                type="password"
                 placeholder="password"
                 className="input input-bordered"
+                required
               />
               <label className="label">
-                <Link href="#" className="label-text-alt link link-hover">
+                <Link
+                  onClick={resetPassword}
+                  className="label-text-alt link link-hover"
+                >
                   Forgot password?
                 </Link>
               </label>
             </div>
+            {error && <p className="text-red-500">{error}</p>}
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button onClick={handleSignIn} className="btn btn-primary">
+                Login
+              </button>
             </div>
             <div className="divider">
               <p className="dark:text-gray-400">Login with social accounts</p>

@@ -5,6 +5,7 @@ import Blog from "./Components/Blog";
 import Course from "./Components/Course";
 import Details from "./Components/Details";
 import ErrorPage from "./Components/ErrorPage";
+import Faq from "./Components/Faq";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Profile from "./Components/Profile";
@@ -42,6 +43,10 @@ function App() {
           element: <Blog></Blog>,
         },
         {
+          path: "faq",
+          element: <Faq></Faq>,
+        },
+        {
           path: "course",
           loader: () => fetch("https://biplob-it-course-amibiplob.vercel.app/"),
           element: <Course></Course>,
@@ -56,7 +61,7 @@ function App() {
     },
   ]);
   return (
-    <div className="bg-slate-200">
+    <div>
       <ToastContainer
         position="top-center"
         autoClose={5000}

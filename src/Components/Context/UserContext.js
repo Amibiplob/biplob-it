@@ -23,17 +23,11 @@ const UserContext = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const forgotPassword = (auth, email, password) => {
+  const forgotPassword = (auth, email) => {
     return sendPasswordResetEmail(auth, email);
   };
 
-  const authInfo = {
-    createUser,
-    user,
-    signIn,
-    forgotPassword,
-  };
-
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -42,7 +36,13 @@ const UserContext = ({ children }) => {
       unsubscribe();
     };
   }, []);
-
+  
+  const authInfo = {
+    createUser,
+    user,
+    signIn,
+    forgotPassword,
+  };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

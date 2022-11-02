@@ -26,7 +26,7 @@ const Main = ({data}) => {
                 {singleData.about.slice(0, 100) + "....."}
               </p>
               <div className="card-actions justify-end">
-                <Link to={`../details/${singleData.id}`} className="badge badge-outline">More...</Link>
+                <Link to={`../details/${singleData.id}`} className="badge btn-outline">More...</Link>
               </div>
             </div>
           </div>

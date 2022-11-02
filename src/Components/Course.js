@@ -16,7 +16,7 @@ const Course = () => {
           <Main data={data}></Main>
         </div>
         <div>
-          <SideBar data={data}></SideBar>
+          <SideBar></SideBar>
         </div>
       </div>
     </>

@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Blog from "./Components/Blog";
+import Checkout from "./Components/Checkout";
 import Course from "./Components/Course";
 import Details from "./Components/Details";
 import ErrorPage from "./Components/ErrorPage";
@@ -39,7 +40,6 @@ function App() {
           path: "profile",
           element: (
             <PrivateRoute>
-      
               <Profile></Profile>
             </PrivateRoute>
           ),
@@ -51,6 +51,16 @@ function App() {
         {
           path: "faq",
           element: <Faq></Faq>,
+        },
+        {
+          path: "checkout/:id",
+          loader: ({ params }) =>
+            fetch(`https://biplob-it-course-amibiplob.vercel.app/${params.id}`),
+          element: (
+            <PrivateRoute>
+              <Checkout></Checkout>
+            </PrivateRoute>
+          ),
         },
         {
           path: "course",

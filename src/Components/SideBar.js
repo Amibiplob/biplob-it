@@ -1,14 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const SideBar = ({data}) => {
-    return (
-      <div className="flex flex-col gap-y-2">
-        {data.map((singleData) => (
-          <Link key={singleData.id} to={`../details/${singleData.id}`} className="btn btn-outline">{singleData.name}</Link>
-        ))}
-      </div>
-    );
+const SideBar = () => {
+
+
+  const [courseData, setCourseData] = useState([]);
+
+
+
+  useEffect(() => {
+    fetch("https://biplob-it-course-amibiplob.vercel.app/")
+      .then((res) => res.json())
+      .then((data) => setCourseData(data));
+  }, []);
+    // console.log(courseData)
+  return (
+    <div className="flex flex-col gap-y-2">
+      {courseData.map((singleData) => (
+        <Link
+          key={singleData.id}
+          to={`../details/${singleData.id}`}
+          className="btn btn-outline btn-sm"
+        >
+          {singleData.name}
+        </Link>
+      ))}
+    </div>
+  );
 };
 
 export default SideBar;

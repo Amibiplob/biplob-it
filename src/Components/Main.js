@@ -16,13 +16,13 @@ const Main = ({data}) => {
                 alt="Course"
               />
             </figure>
-            <div className="card-body pt-3">
+            <div className="card-body p-3">
               <h2 className="card-title">
                 {singleData.name}
                 <div className="badge badge-secondary">NEW</div>
               </h2>
               <p className="sm:hidden block">{singleData.about}</p>
-              <p className="hidden sm:block">
+              <p className="hidden sm:block text-justify">
                 {singleData.about.slice(0, 100) + "....."}
               </p>
               <div className="card-actions justify-end">

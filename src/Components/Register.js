@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,  useLocation, useNavigate} from "react-router-dom";
 import { getAuth, updateProfile, sendEmailVerification } from "firebase/auth";
 import app from "./FireBase/firebase.init";
 import { toast } from "react-toastify";
@@ -8,6 +8,12 @@ const auth = getAuth(app);
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+  // console.log(from);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,12 +35,11 @@ const Register = () => {
   };
 
   const handleRegister = () => {
-    
     createUser(email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-    //    console.log(user);
+        //    console.log(user);
 
         updateProfile(auth.currentUser, {
           displayName: name,
@@ -43,6 +48,7 @@ const Register = () => {
           .then(() => {
             // Profile updated!
             toast.success("Hi " + user.displayName, { autoClose: 5000 });
+             navigate(from, { replace: true });
             // Email verification
             sendEmailVerification(auth.currentUser).then(() => {
               // Email verification sent!
@@ -55,6 +61,7 @@ const Register = () => {
           .catch((error) => {
             toast.error(error, { autoClose: 5000 });
           });
+       
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -147,6 +154,6 @@ const Register = () => {
       </div>
     </div>
   );
-};
+};;
 
 export default Register;

@@ -19,7 +19,7 @@ const Profile = () => {
           className="object-cover object-center w-96 rounded dark:bg-gray-500"
         />
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col text-black">
         <div className="flex items-center gap-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"

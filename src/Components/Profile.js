@@ -4,13 +4,13 @@ import { AuthContext } from "./Context/UserContext";
 const Profile = () => {
   const { user } = useContext(AuthContext);
   const { displayName, emailVerified, photoURL, uid, email } = user;
-//  console.log(user);
+
   return (
     <div className="flex flex-col lg:flex-row items-center my-10 w-fit bg-slate-300 mx-auto p-3 rounded-lg">
       <div className="lg:pr-3 mb-5 lg:m-0">
         <img
           src={
-            email
+            uid
               ? photoURL
               : "https://cdn.vectorstock.com/i/1000x1000/25/72/picture-coming-soon-icon-vector-31612572.webp"
           }

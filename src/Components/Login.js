@@ -16,7 +16,7 @@ const Login = () => {
 
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
-  console.log(from);
+
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -54,7 +54,6 @@ const Login = () => {
     signInWithPopup(auth, githubProvider)
       .then((result) => {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-        const credential = GithubAuthProvider.credentialFromResult(result);
 
         // The signed-in user info.
         const user = result.user;

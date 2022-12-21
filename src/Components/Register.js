@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link,  useLocation, useNavigate} from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getAuth, updateProfile, sendEmailVerification } from "firebase/auth";
 import app from "./FireBase/firebase.init";
 import { toast } from "react-toastify";
@@ -13,7 +13,7 @@ const Register = () => {
 
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
-  // console.log(from);
+
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -39,16 +39,18 @@ const Register = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        //    console.log(user);
+
 
         updateProfile(auth.currentUser, {
           displayName: name,
-          photoURL: photo,
+          photoURL: photo
+            ? photo
+            : "https://cdn.vectorstock.com/i/1000x1000/25/72/picture-coming-soon-icon-vector-31612572.webp",
         })
           .then(() => {
             // Profile updated!
             toast.success("Hi " + user.displayName, { autoClose: 5000 });
-             navigate(from, { replace: true });
+            navigate(from, { replace: true });
             // Email verification
             sendEmailVerification(auth.currentUser).then(() => {
               // Email verification sent!
@@ -61,7 +63,6 @@ const Register = () => {
           .catch((error) => {
             toast.error(error, { autoClose: 5000 });
           });
-       
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -154,6 +155,6 @@ const Register = () => {
       </div>
     </div>
   );
-};;
+};
 
 export default Register;

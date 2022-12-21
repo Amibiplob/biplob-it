@@ -4,18 +4,9 @@ import SideBar from "./SideBar";
 
 const Details = () => {
   const details = useLoaderData([]);
-  //  console.log(details)
+
   const { about, picture, name, id } = details;
 
-
-
-
-
-
-
-
-
-  
   return (
     <div className="grid lg:grid-cols-3 gap-10 w-11/12 mx-auto my-10">
       <div className="lg:col-span-2 card lg:card-side w-3/4 mx-auto  bg-base-100 shadow-2xl border border-orange-400">

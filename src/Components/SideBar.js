@@ -13,7 +13,7 @@ const SideBar = () => {
       .then((res) => res.json())
       .then((data) => setCourseData(data));
   }, []);
-    // console.log(courseData)
+
   return (
     <div className="flex flex-col gap-y-2">
       {courseData.map((singleData) => (

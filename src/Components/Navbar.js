@@ -18,7 +18,7 @@ const Navbar = ({ setDark }) => {
         toast.error(error, { autoClose: 500 });
       });
   };
-  // console.log(user);
+
   return (
     <div className="navbar bg-neutral lg:w-11/12 mx-auto">
       <div className="navbar-start">
@@ -215,13 +215,14 @@ const Navbar = ({ setDark }) => {
           </ul>
         </div>
 
-        {user && (
+        {user?.uid && (
           <div className="dropdown dropdown-end ml-2">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div
-                className="w-10 rounded-full tooltip tooltip-bottom"
-                data-tip={user.displayName}
-              >
+            <label
+              tabIndex={0}
+              className="btn btn-ghost btn-circle avatar  tooltip tooltip-bottom"
+              data-tip={`Hi ,  ${user?.displayName}`}
+            >
+              <div className="w-10 rounded-full">
                 <img
                   src={
                     user?.email

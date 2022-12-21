@@ -5,7 +5,7 @@ import SideBar from './SideBar';
 
 const Course = () => {
   const data = useLoaderData([]);
-  //  console.log(data)
+
   return (
     <>
       <div className='flex justify-center py-7 bg-slate-100'>

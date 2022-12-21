@@ -6,12 +6,12 @@ import SideBar from './SideBar';
 
 const Checkout = () => {
   const details = useLoaderData([]);
-  // console.log(details);
+
   const {  name } = details;
   
   const { user } = useContext(AuthContext);
   const { displayName, email } = user;
-  //  console.log(user);
+
   const tost =()=>{
       toast.success('Your Order place', { autoClose: 5000 });
   }
